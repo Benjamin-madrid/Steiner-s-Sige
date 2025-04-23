@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://nxwkhiytt6wv"]
+
+[ext_resource type="Script" uid="uid://bk56m7j3csqta" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://cn62s31ve8rlg" path="res://scenes/footprint.tscn" id="2_md0e3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ne65n"]
+height = 3.0
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_7p1mj")
+footstep_scene = ExtResource("2_md0e3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ne65n")
+
+[node name="FootstepSpawner" type="Node3D" parent="."]
+
+[node name="FootstepTimer" type="Timer" parent="."]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://cn62s31ve8rlg"]
+
+[ext_resource type="Script" uid="uid://b0vt0emk5bdwt" path="res://scripts/footprint.gd" id="1_i26am"]
+
+[sub_resource type="Gradient" id="Gradient_ixlg0"]
+offsets = PackedFloat32Array(0, 0.00909091, 0.990909, 1)
+colors = PackedColorArray(0.352941, 0.0156863, 0, 1, 0.352941, 0.0156863, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qhidt"]
+gradient = SubResource("Gradient_ixlg0")
+
+[sub_resource type="Curve" id="Curve_2xoui"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_r6ia5"]
+curve = SubResource("Curve_2xoui")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r8cdh"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.5
+emission_ring_inner_radius = 0.5
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 1.5
+radial_accel_max = 2.0
+scale_curve = SubResource("CurveTexture_r6ia5")
+color_ramp = SubResource("GradientTexture1D_qhidt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58tqr"]
+no_depth_test = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_kukeq"]
+material = SubResource("StandardMaterial3D_58tqr")
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="Footprint" type="Node3D"]
+script = ExtResource("1_i26am")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_r8cdh")
+draw_pass_1 = SubResource("BoxMesh_kukeq")
