@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d0xkjgnuvjggk"]
+[gd_scene load_steps=23 format=3 uid="uid://d0xkjgnuvjggk"]
 
 [ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="2_hshl5"]
 [ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="3_we8iq"]
@@ -6,13 +6,13 @@
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_agftt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mywnx"]
-size = Vector3(20, 0.5, 20)
+size = Vector3(20.5, 0.5, 20.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_crr5l"]
-size = Vector3(20, 0.5, 20)
+size = Vector3(20.5, 0.25, 20.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_we8iq"]
-size = Vector3(19.6, 0.25, 19.6)
+size = Vector3(20.5, 0.25, 20.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_agftt"]
 size = Vector3(20, 8, 0.25)
@@ -30,13 +30,25 @@ size = Vector3(0.25, 8, 20)
 size = Vector3(0.25, 8, 15)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5ysdp"]
-size = Vector3(0.25, 7.8, 15)
+size = Vector3(0.25, 8, 15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_we8iq"]
 size = Vector3(20, 8, 0.25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mkm47"]
 size = Vector3(20, 8, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ck75v"]
+size = Vector3(20, 2.5, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wfok4"]
+size = Vector3(20, 2.5, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wfok4"]
+size = Vector3(5, 3.2, 0.25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rgymq"]
+size = Vector3(5, 3.2, 0.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mkm47"]
 size = Vector3(1, 1.89038, 5.69037)
@@ -64,64 +76,121 @@ material_overlay = ExtResource("2_hshl5")
 mesh = SubResource("BoxMesh_mywnx")
 
 [node name="Roof" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.275, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Roof"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 shape = SubResource("BoxShape3D_crr5l")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Roof"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 material_override = ExtResource("3_we8iq")
 material_overlay = ExtResource("2_hshl5")
 mesh = SubResource("BoxMesh_we8iq")
 
 [node name="Wall1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0.15)
 
 [node name="CollisionWall1" type="CollisionShape3D" parent="Wall1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10)
 shape = SubResource("BoxShape3D_agftt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.145817, 4.05414, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10)
 material_override = ExtResource("3_we8iq")
 material_overlay = ExtResource("2_hshl5")
 mesh = SubResource("BoxMesh_crr5l")
 
 [node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 0.075, 0)
 
 [node name="CollisionWall2" type="CollisionShape3D" parent="Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, 0)
 shape = SubResource("BoxShape3D_5ysdp")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4.05587, -0.120495)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, 0)
 material_override = ExtResource("3_we8iq")
 material_overlay = ExtResource("2_hshl5")
 mesh = SubResource("BoxMesh_hshl5")
 
 [node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, 0)
 
 [node name="CollisionWall3" type="CollisionShape3D" parent="Wall3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 2.26565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 2.5)
 shape = SubResource("BoxShape3D_hshl5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.95, 2.26)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 2.5)
 material_override = ExtResource("3_we8iq")
 material_overlay = ExtResource("2_hshl5")
 mesh = SubResource("BoxMesh_5ysdp")
 
 [node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.075, -0.15)
 
 [node name="CollisionWall3" type="CollisionShape3D" parent="Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 shape = SubResource("BoxShape3D_we8iq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192921, 4.04574, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
 material_override = ExtResource("3_we8iq")
 material_overlay = ExtResource("2_hshl5")
 mesh = SubResource("BoxMesh_mkm47")
+
+[node name="Wall5" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.13, -2.675, 0)
+
+[node name="CollisionWall3" type="CollisionShape3D" parent="Wall5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+shape = SubResource("BoxShape3D_ck75v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+material_override = ExtResource("3_we8iq")
+material_overlay = ExtResource("2_hshl5")
+mesh = SubResource("BoxMesh_wfok4")
+
+[node name="Wall6" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.13, 2.825, 0)
+
+[node name="CollisionWall3" type="CollisionShape3D" parent="Wall6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+shape = SubResource("BoxShape3D_ck75v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+material_override = ExtResource("3_we8iq")
+material_overlay = ExtResource("2_hshl5")
+mesh = SubResource("BoxMesh_wfok4")
+
+[node name="Wall7" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.13, 0, -7.5)
+
+[node name="CollisionWall3" type="CollisionShape3D" parent="Wall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+shape = SubResource("BoxShape3D_wfok4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+material_override = ExtResource("3_we8iq")
+material_overlay = ExtResource("2_hshl5")
+mesh = SubResource("BoxMesh_rgymq")
+
+[node name="Wall8" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.13, 0, 7.5)
+
+[node name="CollisionWall3" type="CollisionShape3D" parent="Wall8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+shape = SubResource("BoxShape3D_wfok4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -10)
+material_override = ExtResource("3_we8iq")
+material_overlay = ExtResource("2_hshl5")
+mesh = SubResource("BoxMesh_rgymq")
 
 [node name="Dresser" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0311403, -9.53674e-07, -0.0419273)
