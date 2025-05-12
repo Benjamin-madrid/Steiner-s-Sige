@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://7ru24vnqjbu4"]
+
+[ext_resource type="PackedScene" path="res://Godot-4-3D-Stylized-Grass-main/images/multi_mesh_instance_3d.tscn" id="1_e1kak"]
+[ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="2_3kunl"]
+[ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="2_u68v2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvbpf"]
+render_priority = 0
+shader = ExtResource("2_u68v2")
+shader_parameter/outline_color = Color(0.435192, 0.435192, 0.435192, 1)
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_yarb5"]
+size = Vector3(45, 0.1, 45)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MultiMeshInstance3D" parent="." instance=ExtResource("1_e1kak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0714836, 3, 0.0280132)
+material_override = SubResource("ShaderMaterial_cvbpf")
+material_overlay = ExtResource("2_3kunl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_yarb5")

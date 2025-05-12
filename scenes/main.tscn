@@ -1,22 +1,94 @@
-[gd_scene load_steps=4 format=3 uid="uid://djsqylgpy12by"]
+[gd_scene load_steps=13 format=3 uid="uid://djsqylgpy12by"]
 
 [ext_resource type="PackedScene" uid="uid://d0xkjgnuvjggk" path="res://scenes/house_map.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bk2et11yqg5ok" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://nxwkhiytt6wv" path="res://scenes/enemy.tscn" id="3_sugp2"]
+[ext_resource type="ArrayMesh" uid="uid://buxvuisi1fah2" path="res://materials/OBJ/Bush_Common.obj" id="4_jyhfs"]
+[ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="4_tipki"]
+[ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="5_85g3d"]
+[ext_resource type="ArrayMesh" uid="uid://cmnmm3mukoaej" path="res://materials/OBJ/CommonTree_4.obj" id="5_tefeu"]
+[ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="5_tipki"]
+[ext_resource type="PackedScene" uid="uid://7ru24vnqjbu4" path="res://scenes/grass.tscn" id="6_tefeu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_85g3d"]
+size = Vector3(1, 1000, 250)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
+render_priority = 0
+shader = ExtResource("5_tipki")
+shader_parameter/outline_color = Color(0.654232, 0.654232, 0.654232, 1)
+shader_parameter/outline_width = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
+render_priority = 0
+shader = ExtResource("5_tipki")
+shader_parameter/outline_color = Color(0.517184, 0.517184, 0.517184, 1)
+shader_parameter/outline_width = 1.0
 
 [node name="Main" type="Node3D"]
 
 [node name="HouseMap" parent="." instance=ExtResource("1_0wfyh")]
 
 [node name="Player" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.034, 1.5, 6.642)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.966, 3.5, 6.642)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 3.29259, 9, -5)
-light_color = Color(1, 0.2, 1, 1)
-light_energy = 4.0
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -28.7074, 50, -5)
+light_energy = 7.5
+light_indirect_energy = 5.0
+light_volumetric_fog_energy = 5.0
 shadow_enabled = true
-spot_range = 14.905
+spot_range = 246.101
+spot_angle = 67.29
 
 [node name="Enemy" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.985, 1.5, 4.736)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.0876, 14.7627, -7.30688)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -69.0876, 14.7627, -63.3069)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -69.0876, 14.7627, 53.6931)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+
+[node name="BushCommon" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -54.856, -1.765, -7.009)
+material_override = ExtResource("4_tipki")
+material_overlay = SubResource("ShaderMaterial_85g3d")
+mesh = ExtResource("4_jyhfs")
+
+[node name="CommonTree4" type="MeshInstance3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -60.966, -1.231, -19.544)
+material_override = ExtResource("4_tipki")
+material_overlay = SubResource("ShaderMaterial_choun")
+mesh = ExtResource("5_tefeu")
+skeleton = NodePath("")
+
+[node name="Node3D" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, -1, 0)
+
+[node name="Node3D2" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, -33)
+
+[node name="Node3D3" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, 34)
+
+[node name="Node3D4" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, 34)
+
+[node name="Node3D5" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, -32)
+
+[node name="Node3D6" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, -1)
