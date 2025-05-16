@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://7ru24vnqjbu4"]
 
-[ext_resource type="PackedScene" uid="uid://dku4i32fpxfrr" path="res://Godot-4-3D-Stylized-Grass-main/images/multi_mesh_instance_3d.tscn" id="1_e1kak"]
+[ext_resource type="PackedScene" path="res://Godot-4-3D-Stylized-Grass-main/images/multi_mesh_instance_3d.tscn" id="1_e1kak"]
 [ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="2_3kunl"]
 [ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="2_u68v2"]
 

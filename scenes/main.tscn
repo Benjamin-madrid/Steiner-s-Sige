@@ -1,5 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://djsqylgpy12by"]
 
+[ext_resource type="PackedScene" uid="uid://d0xkjgnuvjggk" path="res://scenes/house_map.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bk2et11yqg5ok" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://nxwkhiytt6wv" path="res://scenes/enemy.tscn" id="3_sugp2"]
 [ext_resource type="ArrayMesh" uid="uid://buxvuisi1fah2" path="res://materials/OBJ/Bush_Common.obj" id="4_jyhfs"]
@@ -9,7 +10,6 @@
 [ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="5_tipki"]
 [ext_resource type="PackedScene" uid="uid://7ru24vnqjbu4" path="res://scenes/grass.tscn" id="6_tefeu"]
 
-[ext_resource type="PackedScene" uid="uid://6j3s4hdynvio" path="res://first_floor.tscn" id="9_85g3d"]
 [sub_resource type="BoxMesh" id="BoxMesh_85g3d"]
 size = Vector3(1, 1000, 250)
 
@@ -27,9 +27,10 @@ shader_parameter/outline_width = 1.0
 
 [node name="Main" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("2_sugp2")]
+[node name="HouseMap" parent="." instance=ExtResource("1_0wfyh")]
 
-transform = Transform3D(-1.20741, 0, -0.323524, 0, 1.25, 0, 0.323524, 0, -1.20741, 4.966, 7.5, 13.642)
+[node name="Player" parent="." instance=ExtResource("2_sugp2")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 1.966, 3.5, 6.642)
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -28.7074, 50, -5)
@@ -91,7 +92,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, -32)
 
 [node name="Node3D6" parent="." instance=ExtResource("6_tefeu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, -1)
-
-[node name="first_floor" parent="." instance=ExtResource("9_85g3d")]
-transform = Transform3D(0.106066, 0, 0.106066, 0, 0.15, 0, -0.106066, 0, 0.106066, 0, 1, 0)
-
