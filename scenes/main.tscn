@@ -7,8 +7,8 @@
 [ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="5_85g3d"]
 [ext_resource type="ArrayMesh" uid="uid://cmnmm3mukoaej" path="res://materials/OBJ/CommonTree_4.obj" id="5_tefeu"]
 [ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="5_tipki"]
-[ext_resource type="PackedScene" uid="uid://7ru24vnqjbu4" path="res://scenes/grass.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://6j3s4hdynvio" path="res://first_floor.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://bdwnjudmmykh4" path="res://scenes/grass.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://6j3s4hdynvio" path="res://scenes/first_floor.tscn" id="9_85g3d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_85g3d"]
 size = Vector3(1, 1000, 250)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4yp6uxksijm5"
-path="res://.godot/imported/fragment-shader.png-08b6ce904317961db30afe6101961b6a.ctex"
+uid="uid://dcn4bu7oiv52e"
+path="res://.godot/imported/in-editor.jpg-2f3dcd8056e3068c5fd05cd0baefe112.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Godot-4-3D-Stylized-Grass-main/images/fragment-shader.png"
-dest_files=["res://.godot/imported/fragment-shader.png-08b6ce904317961db30afe6101961b6a.ctex"]
+source_file="res://materials/Godot-4-3D-Stylized-Grass-main/images/in-editor.jpg"
+dest_files=["res://.godot/imported/in-editor.jpg-2f3dcd8056e3068c5fd05cd0baefe112.ctex"]
 
 [params]
 

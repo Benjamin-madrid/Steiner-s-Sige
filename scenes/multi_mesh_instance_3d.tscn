@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://dku4i32fpxfrr"]
 
-[ext_resource type="Material" uid="uid://egpru16uvbme" path="res://Assets/Stylized3DGrass.tres" id="1_opgyj"]
+[ext_resource type="Material" uid="uid://egpru16uvbme" path="res://scenes/Assets/Stylized3DGrass.tres" id="1_opgyj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yr14d"]
 
