@@ -1,32 +1,19 @@
+
 [gd_scene load_steps=26 format=4 uid="uid://bdwnjudmmykh4"]
 
-[ext_resource type="Material" uid="uid://egpru16uvbme" path="res://scenes/Assets/Stylized3DGrass.tres" id="1_mon8u"]
 [ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="2_3kunl"]
+[ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="2_u68v2"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_isp5m"]
-sky_top_color = Color(0.478431, 0.619608, 0.8, 1)
-sky_horizon_color = Color(0.736, 0.7584, 0.8, 1)
-ground_bottom_color = Color(0.478431, 0.619608, 0.8, 1)
-ground_horizon_color = Color(0.736, 0.7584, 0.8, 1)
-ground_curve = 0.15
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvbpf"]
+render_priority = 0
+shader = ExtResource("2_u68v2")
+shader_parameter/outline_color = Color(0.435192, 0.435192, 0.435192, 1)
+shader_parameter/outline_width = 1.0
 
-[sub_resource type="Sky" id="Sky_nqdyj"]
-sky_material = SubResource("ProceduralSkyMaterial_isp5m")
+[sub_resource type="BoxMesh" id="BoxMesh_yarb5"]
+size = Vector3(45, 0.1, 45)
 
-[sub_resource type="Environment" id="Environment_65bmc"]
-background_mode = 2
-sky = SubResource("Sky_nqdyj")
-tonemap_mode = 2
-ssao_enabled = true
-glow_enabled = true
-glow_normalized = true
-glow_bloom = 0.02
-glow_blend_mode = 0
-volumetric_fog_density = 0.01
-volumetric_fog_emission = Color(1, 1, 1, 1)
-adjustment_enabled = true
-adjustment_contrast = 1.3
-adjustment_saturation = 1.3
+[node name="Node3D" type="Node3D"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1mqg"]
 diffuse_mode = 3
