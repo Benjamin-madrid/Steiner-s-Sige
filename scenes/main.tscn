@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djsqylgpy12by"]
+[gd_scene load_steps=14 format=3 uid="uid://djsqylgpy12by"]
 
 [ext_resource type="PackedScene" uid="uid://bk2et11yqg5ok" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://nxwkhiytt6wv" path="res://scenes/enemy.tscn" id="3_sugp2"]
@@ -8,10 +8,13 @@
 [ext_resource type="ArrayMesh" uid="uid://cmnmm3mukoaej" path="res://materials/OBJ/CommonTree_4.obj" id="5_tefeu"]
 [ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="5_tipki"]
 [ext_resource type="PackedScene" uid="uid://bdwnjudmmykh4" path="res://scenes/grass.tscn" id="6_tefeu"]
-[ext_resource type="PackedScene" uid="uid://6j3s4hdynvio" path="res://scenes/first_floor.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://c2xpo4mthgay4" path="res://scenes/full_house.tscn" id="9_85g3d"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_85g3d"]
-size = Vector3(1, 1000, 250)
+size = Vector3(1, 1000, 175)
+
+[sub_resource type="BoxMesh" id="BoxMesh_choun"]
+size = Vector3(1, 200, 200)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
 render_priority = 0
@@ -35,7 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -28.7074
 light_energy = 7.5
 light_indirect_energy = 5.0
 light_volumetric_fog_energy = 5.0
-shadow_enabled = true
 spot_range = 246.101
 spot_angle = 67.29
 
@@ -43,53 +45,50 @@ spot_angle = 67.29
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.985, 1.5, 4.736)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.0876, 14.7627, -7.30688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
 material_override = ExtResource("4_tipki")
 material_overlay = ExtResource("5_85g3d")
 mesh = SubResource("BoxMesh_85g3d")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -69.0876, 14.7627, -63.3069)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -60)
 material_override = ExtResource("4_tipki")
 material_overlay = ExtResource("5_85g3d")
 mesh = SubResource("BoxMesh_85g3d")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -69.0876, 14.7627, 53.6931)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 60)
 material_override = ExtResource("4_tipki")
 material_overlay = ExtResource("5_85g3d")
 mesh = SubResource("BoxMesh_85g3d")
 
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 50, 0)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_choun")
+
 [node name="BushCommon" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -54.856, -1.765, -7.009)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -45.856, -1.765, -27.009)
 material_override = ExtResource("4_tipki")
 material_overlay = SubResource("ShaderMaterial_85g3d")
 mesh = ExtResource("4_jyhfs")
 
 [node name="CommonTree4" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -60.966, -1.231, -19.544)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -40.966, -1.231, -34.544)
 material_override = ExtResource("4_tipki")
 material_overlay = SubResource("ShaderMaterial_choun")
 mesh = ExtResource("5_tefeu")
 skeleton = NodePath("")
 
-[node name="Node3D" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, -1, 0)
+[node name="Node3D8" parent="." instance=ExtResource("6_tefeu")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, -1, 0)
 
-[node name="Node3D2" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, -33)
-
-[node name="Node3D3" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -1, 34)
-
-[node name="Node3D4" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, 34)
-
-[node name="Node3D5" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, -32)
-
-[node name="Node3D6" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, -1, -1)
-
-[node name="first_floor" parent="." instance=ExtResource("9_85g3d")]
+[node name="full_house" parent="." instance=ExtResource("9_85g3d")]
 transform = Transform3D(0.106066, 0, 0.106066, 0, 0.15, 0, -0.106066, 0, 0.106066, 0, 1, 0)
