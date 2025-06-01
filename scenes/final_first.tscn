@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjhkilt8soc1a"]
+
+[ext_resource type="PackedScene" uid="uid://7uoc03trwfq3" path="res://scenes/Assets/FINAL_FIRST_FLOOR.glb" id="1_lpyun"]
+[ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="2_fuxdj"]
+[ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="3_5o24h"]
+
+[node name="FINAL_FIRST_FLOOR" instance=ExtResource("1_lpyun")]
+
+[node name="Plane-wall" parent="." index="0"]
+material_override = ExtResource("2_fuxdj")
+material_overlay = ExtResource("3_5o24h")
+
+[node name="Plane-roof" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 1)
+material_override = ExtResource("2_fuxdj")
+material_overlay = ExtResource("3_5o24h")
+
+[node name="Plane-floor-bodega" parent="." index="2"]
+material_override = ExtResource("2_fuxdj")
+material_overlay = ExtResource("3_5o24h")
+
+[node name="Grid_001" parent="." index="3"]
+material_override = ExtResource("2_fuxdj")
+material_overlay = ExtResource("3_5o24h")
