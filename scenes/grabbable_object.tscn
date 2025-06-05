@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://djkd5owu5ccpy"]
+
+[ext_resource type="Script" uid="uid://bqg0nyigi0ifv" path="res://scripts/grabbable_object.gd" id="1_ru2iv"]
+[ext_resource type="AudioStream" uid="uid://c6ffmy6x1laue" path="res://sfx/Can_clink_4.wav" id="2_esi27"]
+[ext_resource type="Material" path="res://materials/black_plain.tres" id="2_xuonh"]
+[ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="3_esi27"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j0ugd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xuonh"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Grabbable Object" type="RigidBody3D" groups=["grabbable_object"]]
+collision_layer = 265
+collision_mask = 265
+contact_monitor = true
+max_contacts_reported = 2
+script = ExtResource("1_ru2iv")
+HitSoundWAV = ExtResource("2_esi27")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = ExtResource("2_xuonh")
+material_overlay = ExtResource("3_esi27")
+mesh = SubResource("BoxMesh_j0ugd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xuonh")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
