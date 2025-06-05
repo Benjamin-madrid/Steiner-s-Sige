@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bqwgrjdbkyay7"
+path="res://.godot/imported/RockPath_Square_Wide.obj-36a953745ccb2a5fc345026e583272df.mesh"
+
+[deps]
+
+files=["res://.godot/imported/RockPath_Square_Wide.obj-36a953745ccb2a5fc345026e583272df.mesh"]
+
+source_file="res://assets/OBJ/RockPath_Square_Wide.obj"
+dest_files=["res://.godot/imported/RockPath_Square_Wide.obj-36a953745ccb2a5fc345026e583272df.mesh", "res://.godot/imported/RockPath_Square_Wide.obj-36a953745ccb2a5fc345026e583272df.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://c2xpo4mthgay4"]
 
-[ext_resource type="PackedScene" uid="uid://boih416awqxq2" path="res://scenes/Assets/full_house.glb" id="1_7qqyd"]
-[ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="2_t7kli"]
+[ext_resource type="PackedScene" uid="uid://boih416awqxq2" path="res://assets/full_house.glb" id="1_7qqyd"]
+[ext_resource type="Material" path="res://materials/black_plain.tres" id="2_t7kli"]
 [ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="3_5ojch"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8dax0"]

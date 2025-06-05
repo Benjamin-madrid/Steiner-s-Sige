@@ -1,35 +1,50 @@
-extends CharacterBody3D
+class_name Enemy extends CharacterBody3D
 
-@export var footstep_scene: PackedScene
+# Footsteps, navigation agent and deteccion areas
 @onready var spawner = $FootstepSpawner
+@onready var navigationAgent : NavigationAgent3D = $NavigationAgent3D
+@onready var delimiters = get_tree().get_nodes_in_group("MapLimits")
+@onready var enemy_hearing: Area3D = $EnemyHearing
 
+# Enemy states
+var Patrol: EnemyStates = preload("res://scripts/states/enemy_states/patrol.gd").new()
+var Searching: EnemyStates = preload("res://scripts/states/enemy_states/searching.gd").new()
+var Waiting: EnemyStates = preload("res://scripts/states/enemy_states/waiting.gd").new()
+
+# 
 @export var move_speed := 2.0
+@export var footstep_scene: PackedScene
 @export var footstep_distance := 1.0
 
-var direction = Vector3.FORWARD
-var moving_forward = true
 var last_footstep_position: Vector3
+var min_limit: Vector3
+var max_limit: Vector3
+
+# Current enemy state
+var state: EnemyStates
+
+# Changes the current state for a given new one
+func setState(newState: EnemyStates):
+	state = newState
+	state.stateEnter(self)
 
 func _ready():
 	last_footstep_position = global_transform.origin
+	for limit in delimiters:
+		var limit_pos = limit.global_position
+		min_limit = min_limit.min(limit_pos)
+		max_limit = max_limit.max(limit_pos)
+	setState(Waiting)
 
 func _physics_process(_delta):
-	if moving_forward:
-		velocity = direction * move_speed
-	else:
-		velocity = -direction * move_speed
-	
+	if state:
+		state.update(self)
 	move_and_slide()
 
 	var distance = global_transform.origin.distance_to(last_footstep_position)
 	if distance >= footstep_distance:
 		_spawn_footstep()
 		last_footstep_position = global_transform.origin
-
-	if moving_forward and global_transform.origin.z <= -5:
-		moving_forward = false
-	elif not moving_forward and global_transform.origin.z >= 0:
-		moving_forward = true
 
 func _spawn_footstep():
 	if not footstep_scene:
@@ -38,3 +53,23 @@ func _spawn_footstep():
 	var step = footstep_scene.instantiate()
 	spawner.add_child(step)
 	step.global_transform.origin = global_transform.origin - Vector3(0, 1.5, 0)
+
+func _on_EnemyHearing_entered(body):
+	if body.has_signal("noise_emitted"):
+		body.connect("noise_emitted", Callable(self, "_on_sound_heard"))
+		
+func _on_HearingArea_body_exited(body):
+	if body.has_signal("noise_emitted"):
+		body.disconnect("noise_emitted", Callable(self, "_on_sound_heard"))
+
+func _on_sound_heard(sound_pos: Vector3):
+	navigationAgent.set_target_position(sound_pos)
+	setState(Searching)
+
+func move_towards(targetPos):
+	var direction = global_position.direction_to(targetPos)
+	if direction != Vector3.ZERO:
+		var view = global_position + direction
+		view.y = 1.78
+		look_at(view, Vector3.UP)
+	velocity = direction * move_speed

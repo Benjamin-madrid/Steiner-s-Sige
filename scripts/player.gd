@@ -6,6 +6,8 @@ extends CharacterBody3D
 @export var mouse_sensitivity := 0.002
 
 var head_rotation := Vector2.ZERO
+var grabbedObject : RigidBody3D
+var closest_interactable : Object
 @onready var camera_3d: Camera3D = $Camera3D
 
 func _ready():
@@ -20,6 +22,14 @@ func _unhandled_input(event):
 		rotation.y = head_rotation.x
 		camera_3d.rotation.x = head_rotation.y
 
+func GrabObject(obj : RigidBody3D):
+	if grabbedObject == null:
+		grabbedObject = obj
+		$Camera3D/Generic6DOFJoint3D.node_b = obj.get_path()
+	else:
+		grabbedObject = null
+		$Camera3D/Generic6DOFJoint3D.node_b = $Camera3D/Generic6DOFJoint3D/ResetObject.get_path()
+
 func _physics_process(delta):
 	var input_dir = Vector3.ZERO
 
@@ -33,6 +43,13 @@ func _physics_process(delta):
 		input_dir.x += 1
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
+	if ($Camera3D/RayCast3D.is_colliding()):
+		var obj = $Camera3D/RayCast3D.get_collider()
+		if (Input.is_action_just_pressed("Interact")):
+			if obj.has_method("Interact"):
+					obj.Interact()
+	if Input.is_action_just_pressed("Interact") and closest_interactable != null:
+		closest_interactable.interact()
 
 	input_dir = input_dir.normalized()
 	var direction = (global_transform.basis * input_dir).normalized()

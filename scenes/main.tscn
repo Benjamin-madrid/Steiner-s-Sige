@@ -1,14 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://djsqylgpy12by"]
+[gd_scene load_steps=19 format=3 uid="uid://djsqylgpy12by"]
 
 [ext_resource type="PackedScene" uid="uid://bk2et11yqg5ok" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://nxwkhiytt6wv" path="res://scenes/enemy.tscn" id="3_sugp2"]
-[ext_resource type="ArrayMesh" uid="uid://buxvuisi1fah2" path="res://materials/OBJ/Bush_Common.obj" id="4_jyhfs"]
-[ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="4_tipki"]
+[ext_resource type="ArrayMesh" uid="uid://buxvuisi1fah2" path="res://assets/OBJ/Bush_Common.obj" id="4_jyhfs"]
+[ext_resource type="Material" path="res://materials/black_plain.tres" id="4_tipki"]
 [ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="5_85g3d"]
-[ext_resource type="ArrayMesh" uid="uid://cmnmm3mukoaej" path="res://materials/OBJ/CommonTree_4.obj" id="5_tefeu"]
+[ext_resource type="ArrayMesh" uid="uid://cmnmm3mukoaej" path="res://assets/OBJ/CommonTree_4.obj" id="5_tefeu"]
 [ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="5_tipki"]
-[ext_resource type="PackedScene" uid="uid://bdwnjudmmykh4" path="res://scenes/grass.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c2xpo4mthgay4" path="res://scenes/full_house.tscn" id="9_85g3d"]
+[ext_resource type="PackedScene" uid="uid://dku4i32fpxfrr" path="res://scenes/grass.tscn" id="10_choun"]
+[ext_resource type="PackedScene" uid="uid://da81c5ks4iuwl" path="res://scenes/UI/crosshair.tscn" id="10_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://cs5h5lnk11jl4" path="res://scenes/house furniture/sofa.tscn" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://cwb2auca8nxyv" path="res://scenes/house furniture/tv_set.tscn" id="12_eb6dy"]
+[ext_resource type="PackedScene" uid="uid://djkd5owu5ccpy" path="res://scenes/grabbable_object.tscn" id="13_trceg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_85g3d"]
 size = Vector3(1, 1000, 175)
@@ -16,24 +20,85 @@ size = Vector3(1, 1000, 175)
 [sub_resource type="BoxMesh" id="BoxMesh_choun"]
 size = Vector3(1, 200, 200)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
-render_priority = 0
-shader = ExtResource("5_tipki")
-shader_parameter/outline_color = Color(0.654232, 0.654232, 0.654232, 1)
-shader_parameter/outline_width = 0.5
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_choun"]
 render_priority = 0
 shader = ExtResource("5_tipki")
 shader_parameter/outline_color = Color(0.517184, 0.517184, 0.517184, 1)
 shader_parameter/outline_width = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_85g3d"]
+render_priority = 0
+shader = ExtResource("5_tipki")
+shader_parameter/outline_color = Color(0.654232, 0.654232, 0.654232, 1)
+shader_parameter/outline_width = 0.5
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_eb6dy"]
+vertices = PackedVector3Array(-22, 17.485, -14.5487, -22, 17.485, 21.4513, 22.25, 17.485, 21.4513, 22.25, 17.485, -14.5487, 14, 8.985, 20.7013, 14.25, 8.985, 15.4513, 14.25, 8.985, 3.95125, -21.5, 8.985, 20.7013, 22, 8.985, 3.70125, 22, 8.985, -14.2987, -21.5, 8.985, -14.0487, -16, 0.735, -2.79875, -16, 0.735, 1.95125, -14, 0.735, 2.20125, -14, 0.735, -3.04875, -5.25001, 0.735, 6.95125, -0.750006, 0.735, 3.45125, 2.24999, 0.735, -1.29875, 2.24999, 0.735, -14.0487, -14, 0.735, -14.0487, 2.24999, 0.735, 3.45125, -1.00001, 0.735, 6.70125, -14, 0.735, 8.20125, -13.25, 0.735, 8.20125, -13, 0.735, 9.20125, -5.50001, 0.735, 9.20125, 10.25, 0.735, -1.79875, 12.25, 0.735, -1.79875, 12.5, 0.735, -2.54875, 14, 0.735, -14.0487, 9.99999, 0.735, -2.54875, 3.99999, 0.735, -14.0487, 3.99999, 0.735, -2.54875, 14, 0.735, -2.54875, 17.75, 0.735, -1.79875, 19.75, 0.735, -1.79875, 20, 0.735, -2.54875, 22, 0.735, -14.0487, 15.75, 0.735, -14.0487, 17.5, 0.735, -2.54875, 22, 0.735, -2.54875, 15.75, 0.735, -2.54875, -21.5, 0.735, -2.79875, -21.5, 0.735, 1.95125, 15.5, 0.735, 3.45125, 15.75, 0.735, 4.95125, 16.5, 0.735, 4.95125, 16.75, 0.735, 2.95125, 7.74999, 0.735, 3.45125, 12.5, 0.735, -0.79875, 9.99999, 0.735, -0.79875, 20, 0.735, -0.79875, 17.5, 0.735, -0.79875, 22, 0.735, 3.20125, 4.99999, 0.735, 3.45125, 2.74999, 0.735, -0.79875, 5.24999, 0.735, 4.45125, 7.49999, 0.735, 4.45125, 22, 0.735, -0.79875, 4.99999, 0.735, 5.20125, 7.74999, 0.735, 5.20125, 0.749994, 0.735, 20.7013, 14, 0.735, 20.7013, 0.749994, 0.735, 5.20125, 14, 0.735, 5.20125, 16.75, 0.735, 9.95125, 15.75, 0.735, 20.7013, 21.75, 0.735, 20.7013, 22, 0.735, 9.95125, -2.25001, 1.735, 9.70125, -2.25001, 1.735, 15.9513, -1.75001, 1.735, 12.2013, -2.00001, 1.735, 8.20125, -4.50001, 1.735, 9.45125, -4.50001, 1.735, 7.95125, -7.00001, 0.735, 20.7013, -6.75001, 0.985, 21.4513, -4.00001, 0.985, 21.4513, -3.75001, 0.735, 20.7013, -3.25001, 0.735, 17.2013, -8.00001, 0.735, 20.7013, -11.25, 0.985, 21.4513, -8.25001, 0.985, 21.4513, -11.5, 0.735, 20.7013, -13, 0.735, 16.7013, -5.25001, 0.735, 10.4513, -14, 0.735, 16.9513, -14, 0.735, 20.7013, -1.00001, 0.735, 20.7013, -1.00001, 0.735, 17.4513, -3.25001, 0.735, 10.4513, 14.5, 8.985, 15.9513, 21.75, 8.985, 20.7013, 22, 8.985, 16.2013, 22, 8.985, 15.4513, -7.00001, 0.735, 22.2013, -3.50001, 0.735, 22.4513, -8.00001, 0.735, 22.2013, -11.5, 0.735, 22.4513, -12.5, 0.735, 22.4513, -12.5, 0.735, 32.4512, -2.50001, 0.735, 32.4512, -2.50001, 0.735, 22.4513)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 6), PackedInt32Array(9, 6, 10), PackedInt32Array(10, 6, 7), PackedInt32Array(11, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(16, 15, 17), PackedInt32Array(17, 15, 14), PackedInt32Array(17, 14, 19), PackedInt32Array(17, 19, 18), PackedInt32Array(17, 20, 16), PackedInt32Array(16, 21, 15), PackedInt32Array(23, 22, 13), PackedInt32Array(23, 13, 24), PackedInt32Array(24, 13, 14), PackedInt32Array(24, 14, 15), PackedInt32Array(24, 15, 25), PackedInt32Array(26, 30, 27), PackedInt32Array(27, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(32, 31, 30), PackedInt32Array(30, 31, 29), PackedInt32Array(29, 33, 28), PackedInt32Array(34, 39, 35), PackedInt32Array(35, 39, 36), PackedInt32Array(36, 39, 38), PackedInt32Array(36, 38, 37), PackedInt32Array(37, 40, 36), PackedInt32Array(39, 41, 38), PackedInt32Array(43, 42, 12), PackedInt32Array(12, 42, 11), PackedInt32Array(45, 44, 46), PackedInt32Array(46, 44, 47), PackedInt32Array(50, 49, 48), PackedInt32Array(48, 49, 44), PackedInt32Array(34, 35, 51), PackedInt32Array(27, 49, 26), PackedInt32Array(26, 49, 50), PackedInt32Array(34, 51, 52), PackedInt32Array(52, 51, 47), PackedInt32Array(47, 51, 53), PackedInt32Array(54, 55, 48), PackedInt32Array(48, 55, 50), PackedInt32Array(56, 54, 57), PackedInt32Array(57, 54, 48), PackedInt32Array(47, 44, 52), PackedInt32Array(52, 44, 49), PackedInt32Array(17, 55, 20), PackedInt32Array(20, 55, 54), PackedInt32Array(51, 58, 53), PackedInt32Array(57, 60, 56), PackedInt32Array(56, 60, 59), PackedInt32Array(59, 60, 61), PackedInt32Array(61, 60, 62), PackedInt32Array(61, 63, 59), PackedInt32Array(60, 64, 62), PackedInt32Array(46, 65, 45), PackedInt32Array(45, 65, 66), PackedInt32Array(68, 67, 65), PackedInt32Array(65, 67, 66), PackedInt32Array(72, 71, 69), PackedInt32Array(69, 71, 70), PackedInt32Array(69, 73, 72), PackedInt32Array(72, 73, 74), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 78), PackedInt32Array(78, 75, 79), PackedInt32Array(79, 75, 80), PackedInt32Array(81, 83, 82), PackedInt32Array(82, 83, 80), PackedInt32Array(83, 84, 80), PackedInt32Array(80, 84, 79), PackedInt32Array(79, 84, 85), PackedInt32Array(85, 84, 24), PackedInt32Array(86, 84, 87), PackedInt32Array(87, 84, 83), PackedInt32Array(89, 88, 79), PackedInt32Array(79, 88, 78), PackedInt32Array(24, 25, 85), PackedInt32Array(85, 90, 79), PackedInt32Array(4, 5, 91), PackedInt32Array(93, 92, 94), PackedInt32Array(94, 92, 91), PackedInt32Array(91, 92, 4), PackedInt32Array(76, 77, 95), PackedInt32Array(95, 77, 96), PackedInt32Array(82, 97, 81), PackedInt32Array(81, 97, 98), PackedInt32Array(100, 99, 98), PackedInt32Array(96, 102, 101), PackedInt32Array(95, 96, 97), PackedInt32Array(97, 96, 98), PackedInt32Array(98, 96, 101), PackedInt32Array(98, 101, 100)]
+
 [node name="Main" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(-1.20741, 0, -0.323524, 0, 1.25, 0, 0.323524, 0, -1.20741, 4.966, 7.5, 13.642)
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_sugp2")]
+transform = Transform3D(-1.20741, 0, -0.323524, 0, 1.25, 0, 0.323524, 0, -1.20741, 4.966, 2.13502, -0.0279303)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+[node name="Enemy" parent="." instance=ExtResource("3_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.985, 1.83244, 3.01045)
+
+[node name="Fondo" type="Node3D" parent="."]
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.015, 2.9178, 4.736)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+skeleton = NodePath("../../Enemy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.985, 2.9178, 4.736)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+skeleton = NodePath("../../Enemy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.985, 2.9178, -55.264)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+skeleton = NodePath("../../Enemy")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.985, 2.9178, 64.736)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_85g3d")
+skeleton = NodePath("../../Enemy")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Fondo"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -5.985, 52.9178, 4.736)
+material_override = ExtResource("4_tipki")
+material_overlay = ExtResource("5_85g3d")
+mesh = SubResource("BoxMesh_choun")
+skeleton = NodePath("../../Enemy")
+
+[node name="Ambientación" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127085, 2.06168, 0.320911)
+
+[node name="CommonTree4" type="MeshInstance3D" parent="Ambientación"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -40.966, -1.231, -34.544)
+material_override = ExtResource("4_tipki")
+material_overlay = SubResource("ShaderMaterial_choun")
+mesh = ExtResource("5_tefeu")
+skeleton = NodePath("")
+
+[node name="BushCommon" type="MeshInstance3D" parent="Ambientación"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -45.856, -1.765, -27.009)
+material_override = ExtResource("4_tipki")
+material_overlay = SubResource("ShaderMaterial_85g3d")
+mesh = ExtResource("4_jyhfs")
+skeleton = NodePath("../..")
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Ambientación"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, -28.7074, 50, -5)
 light_energy = 7.5
 light_indirect_energy = 5.0
@@ -41,54 +106,50 @@ light_volumetric_fog_energy = 5.0
 spot_range = 246.101
 spot_angle = 67.29
 
-[node name="Enemy" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.985, 1.5, 4.736)
+[node name="Pasto" parent="Ambientación" instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -43.1537, -1.25, -31.927)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
-material_override = ExtResource("4_tipki")
-material_overlay = ExtResource("5_85g3d")
-mesh = SubResource("BoxMesh_85g3d")
+[node name="Pasto2" parent="Ambientación" instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -43.252, -1.25, 12.4438)
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
-material_override = ExtResource("4_tipki")
-material_overlay = ExtResource("5_85g3d")
-mesh = SubResource("BoxMesh_85g3d")
+[node name="Pasto3" parent="Ambientación" instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, -43.1537, -1.25, 57.1813)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -60)
-material_override = ExtResource("4_tipki")
-material_overlay = ExtResource("5_85g3d")
-mesh = SubResource("BoxMesh_85g3d")
+[node name="Pasto4" parent="Ambientación" instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 1.42291, -1.25, 57.1813)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 60)
-material_override = ExtResource("4_tipki")
-material_overlay = ExtResource("5_85g3d")
-mesh = SubResource("BoxMesh_85g3d")
+[node name="Pasto5" parent="Ambientación" instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 46.1809, -1.25, 57.1813)
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="Enemy"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 50, 0)
-material_override = ExtResource("4_tipki")
-material_overlay = ExtResource("5_85g3d")
-mesh = SubResource("BoxMesh_choun")
+[node name="Pasto6" parent="Ambientación" instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 46.1809, -1.25, 12.9207)
 
-[node name="BushCommon" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -45.856, -1.765, -27.009)
-material_override = ExtResource("4_tipki")
-material_overlay = SubResource("ShaderMaterial_85g3d")
-mesh = ExtResource("4_jyhfs")
+[node name="Pasto7" parent="Ambientación" instance=ExtResource("10_choun")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 1.36923, -1.25, -31.1664)
 
-[node name="CommonTree4" type="MeshInstance3D" parent="."]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -40.966, -1.231, -34.544)
-material_override = ExtResource("4_tipki")
-material_overlay = SubResource("ShaderMaterial_choun")
-mesh = ExtResource("5_tefeu")
-skeleton = NodePath("")
+[node name="Crosshair" parent="." instance=ExtResource("10_ya4ey")]
 
-[node name="Node3D8" parent="." instance=ExtResource("6_tefeu")]
-transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 0, -1, 0)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_eb6dy")
 
-[node name="full_house" parent="." instance=ExtResource("9_85g3d")]
-transform = Transform3D(0.106066, 0, 0.106066, 0, 0.15, 0, -0.106066, 0, 0.106066, 0, 1, 0)
+[node name="full_house" parent="NavigationRegion3D" instance=ExtResource("9_85g3d")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="Furniture" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="sofa" parent="NavigationRegion3D/Furniture" instance=ExtResource("11_ya4ey")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -0.829239, 1.42986, 12.1613)
+
+[node name="TVSet" parent="NavigationRegion3D/Furniture" instance=ExtResource("12_eb6dy")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, -11.2806, 0.497171, 11.6009)
+
+[node name="MapLimiters" type="Node3D" parent="."]
+
+[node name="corner" type="Marker3D" parent="MapLimiters" groups=["MapLimits"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8059, 0.566309, 20.5881)
+
+[node name="corner2" type="Marker3D" parent="MapLimiters" groups=["MapLimits"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6684, 0.684919, -13.6371)
+
+[node name="Grabbable Object" parent="." instance=ExtResource("13_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0155, 2.04357, 5.44449)
