@@ -36,9 +36,11 @@ func _ready():
 		max_limit = max_limit.max(limit_pos)
 	setState(Waiting)
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if state:
 		state.update(self)
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 	move_and_slide()
 
 	var distance = global_transform.origin.distance_to(last_footstep_position)
@@ -67,9 +69,9 @@ func _on_sound_heard(sound_pos: Vector3):
 	setState(Searching)
 
 func move_towards(targetPos):
+	targetPos.y = global_position.y
 	var direction = global_position.direction_to(targetPos)
 	if direction != Vector3.ZERO:
 		var view = global_position + direction
-		view.y = 1.78
 		look_at(view, Vector3.UP)
 	velocity = direction * move_speed

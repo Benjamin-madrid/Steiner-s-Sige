@@ -13,7 +13,6 @@ func _on_body_entered(_body):
 	if HitSoundWAV:
 		audio_stream_player_3d.stream = HitSoundWAV
 		audio_stream_player_3d.play()
-	print("emiti un sonido")
 	emit_signal("noise_emitted", global_transform.origin)
 
 func Interact():
