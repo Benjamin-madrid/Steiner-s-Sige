@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bk2et11yqg5ok" path="res://scenes/player.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://nxwkhiytt6wv" path="res://scenes/enemy.tscn" id="3_sugp2"]
 [ext_resource type="ArrayMesh" uid="uid://buxvuisi1fah2" path="res://assets/OBJ/Bush_Common.obj" id="4_jyhfs"]
-[ext_resource type="Material" path="res://materials/black_plain.tres" id="4_tipki"]
+[ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="4_tipki"]
 [ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="5_85g3d"]
 [ext_resource type="ArrayMesh" uid="uid://cmnmm3mukoaej" path="res://assets/OBJ/CommonTree_4.obj" id="5_tefeu"]
 [ext_resource type="Shader" uid="uid://donucqndmqe6i" path="res://materials/shaders/outline.gdshader" id="5_tipki"]
@@ -42,7 +42,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 transform = Transform3D(-1.20741, 0, -0.323524, 0, 1.25, 0, 0.323524, 0, -1.20741, 4.966, 2.13502, -0.0279303)
 
 [node name="Enemy" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.985, 1.83244, 3.01045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.985, 1.31296, 3.01045)
 
 [node name="Fondo" type="Node3D" parent="."]
 

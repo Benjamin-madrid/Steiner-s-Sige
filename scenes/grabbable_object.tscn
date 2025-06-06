@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqg0nyigi0ifv" path="res://scripts/grabbable_object.gd" id="1_ru2iv"]
 [ext_resource type="AudioStream" uid="uid://c6ffmy6x1laue" path="res://sfx/Can_clink_4.wav" id="2_esi27"]
-[ext_resource type="Material" path="res://materials/black_plain.tres" id="2_xuonh"]
+[ext_resource type="Material" uid="uid://clk1kyer1ype0" path="res://materials/black_plain.tres" id="2_xuonh"]
 [ext_resource type="Material" uid="uid://bckcngi1jo8ud" path="res://materials/outline_material.tres" id="3_esi27"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j0ugd"]
