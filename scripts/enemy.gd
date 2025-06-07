@@ -10,7 +10,7 @@ class_name Enemy extends CharacterBody3D
 var Patrol: EnemyStates = preload("res://scripts/states/enemy_states/patrol.gd").new()
 var Searching: EnemyStates = preload("res://scripts/states/enemy_states/searching.gd").new()
 var Waiting: EnemyStates = preload("res://scripts/states/enemy_states/waiting.gd").new()
-
+var Hunting: EnemyStates = preload("res://scripts/states/enemy_states/hunting.gd").new()
 # 
 @export var move_speed := 2.0
 @export var footstep_scene: PackedScene
@@ -19,6 +19,8 @@ var Waiting: EnemyStates = preload("res://scripts/states/enemy_states/waiting.gd
 var last_footstep_position: Vector3
 var min_limit: Vector3
 var max_limit: Vector3
+var player: CharacterBody3D
+
 
 # Current enemy state
 var state: EnemyStates
@@ -37,6 +39,14 @@ func _ready():
 	setState(Waiting)
 
 func _physics_process(delta):
+	if player:
+		$VisionRayCast.look_at(player.global_transform.origin, Vector3.UP)
+		if $VisionRayCast.is_colliding():
+			var collider = $VisionRayCast.get_collider()
+			if collider.is_in_group("Player"):
+				if !(state == Hunting):
+					setState(Hunting)
+
 	if state:
 		state.update(self)
 	if not is_on_floor():
@@ -54,7 +64,7 @@ func _spawn_footstep():
 
 	var step = footstep_scene.instantiate()
 	spawner.add_child(step)
-	step.global_transform.origin = global_transform.origin - Vector3(0, 1.5, 0)
+	step.global_transform.origin = global_transform.origin - Vector3(0, 0, 0)
 
 func _on_EnemyHearing_entered(body):
 	if body.has_signal("noise_emitted"):
@@ -65,7 +75,9 @@ func _on_HearingArea_body_exited(body):
 		body.disconnect("noise_emitted", Callable(self, "_on_sound_heard"))
 
 func _on_sound_heard(sound_pos: Vector3):
-	navigationAgent.set_target_position(sound_pos)
+	var nav_map = navigationAgent.get_navigation_map()
+	var targetPos = NavigationServer3D.map_get_closest_point(nav_map, sound_pos)
+	navigationAgent.set_target_position(targetPos)
 	setState(Searching)
 
 func move_towards(targetPos):
@@ -75,3 +87,13 @@ func move_towards(targetPos):
 		var view = global_position + direction
 		look_at(view, Vector3.UP)
 	velocity = direction * move_speed
+
+
+func _on_enemy_sight_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		player = body
+
+
+func _on_enemy_sight_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Player"):
+		player = null

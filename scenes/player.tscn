@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk2et11yqg5ok"]
+[gd_scene load_steps=6 format=3 uid="uid://bk2et11yqg5ok"]
 
 [ext_resource type="Script" uid="uid://cxq4tfwtu0t42" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bv46er36ucd12" path="res://scripts/player_hurtbox.gd" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://hipwou7a8fcd" path="res://scenes/UI/death_ui.tscn" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 height = 3.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhqgy"]
+size = Vector3(1, 3, 1)
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_3vyb7")
@@ -24,3 +29,16 @@ node_a = NodePath("StaticBody3D")
 [node name="StaticBody3D" type="StaticBody3D" parent="Camera3D/Generic6DOFJoint3D"]
 
 [node name="ResetObject" type="StaticBody3D" parent="Camera3D/Generic6DOFJoint3D"]
+
+[node name="Hurtbox" type="Area3D" parent="."]
+script = ExtResource("2_g2els")
+metadata/_custom_type_script = "uid://bv46er36ucd12"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("BoxShape3D_qhqgy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DeathUI" parent="CanvasLayer" instance=ExtResource("3_qhqgy")]
+
+[connection signal="hurtbox_hit" from="Hurtbox" to="." method="_on_hurtbox_hurtbox_hit"]

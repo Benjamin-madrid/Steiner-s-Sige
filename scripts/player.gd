@@ -9,6 +9,7 @@ var head_rotation := Vector2.ZERO
 var grabbedObject : RigidBody3D
 var closest_interactable : Object
 @onready var camera_3d: Camera3D = $Camera3D
+@onready var death_ui: MarginContainer = $CanvasLayer/DeathUI
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -65,3 +66,9 @@ func _physics_process(delta):
 			velocity.y = jump_velocity
 
 	move_and_slide()
+
+
+func _on_hurtbox_hurtbox_hit() -> void:
+	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	death_ui.visible = true
