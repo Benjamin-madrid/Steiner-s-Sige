@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://nxwkhiytt6wv"]
+[gd_scene load_steps=7 format=3 uid="uid://nxwkhiytt6wv"]
 
 [ext_resource type="Script" uid="uid://bk56m7j3csqta" path="res://scripts/enemy.gd" id="1_7p1mj"]
+[ext_resource type="PackedScene" uid="uid://cn62s31ve8rlg" path="res://scenes/footprint.tscn" id="2_md0e3"]
+[ext_resource type="Script" uid="uid://b8j47ieyoh01c" path="res://scripts/enemy_hitbox.gd" id="3_4ra3w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ne65n"]
 height = 3.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_md0e3"]
+radius = 1.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_md0e3"]
-size = Vector3(2, 1.5, 6)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5uy6h"]
+size = Vector3(1.25, 3, 1.25)
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_7p1mj")
+footstep_scene = ExtResource("2_md0e3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50721, 0)
@@ -32,15 +36,25 @@ transform = Transform3D(13, 0, 0, 0, 13, 0, 0, 0, 13, 0, 0, 0)
 shape = SubResource("SphereShape3D_md0e3")
 
 [node name="EnemySight" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50721, -5.63384)
-collision_layer = 256
-collision_mask = 256
+transform = Transform3D(-1, 0, 0, 0, 4.37114e-08, 1, 0, -1, 4.37114e-08, 0, 2.5, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemySight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.921309, 2.66585)
-shape = SubResource("BoxShape3D_md0e3")
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="EnemySight"]
+polygon = PackedVector2Array(-10, 15, 10, 15, 0, 0)
+
+[node name="VisionRayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+target_position = Vector3(0, 0, -30)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("3_4ra3w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("BoxShape3D_5uy6h")
+
 [connection signal="body_entered" from="EnemyHearing" to="." method="_on_EnemyHearing_entered"]
 [connection signal="body_exited" from="EnemyHearing" to="." method="_on_HearingArea_body_exited"]
+[connection signal="body_entered" from="EnemySight" to="." method="_on_enemy_sight_body_entered"]
+[connection signal="body_exited" from="EnemySight" to="." method="_on_enemy_sight_body_exited"]
